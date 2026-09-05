@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PonteTrucha.org</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #111111;
+        }
+
+        /* ---------- NAVEGACIÓN ---------- */
+
+        nav {
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            border-bottom: 1px solid #eeeeee;
+            background: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            font-weight: 400;
+        }
+
+        .menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #111111;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+
+        .menu a:hover {
+            opacity: 0.5;
+        }
+
+        /* ---------- HERO ---------- */
+
+        .hero {
+            min-height: calc(100vh - 72px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 12vw, 9rem);
+            font-weight: 900;
+            letter-spacing: -0.08em;
+            line-height: 0.9;
+            margin-bottom: 35px;
+        }
+
+        .hero h1 span {
+            font-weight: 300;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: 0 auto 40px;
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #555555;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 15px 28px;
+            background: #111111;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-2px);
+            background: #333333;
+        }
+
+        /* ---------- SECCIONES ---------- */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .section-intro {
+            max-width: 650px;
+            color: #666666;
+            line-height: 1.7;
+            margin-bottom: 50px;
+        }
+
+        /* ---------- ECOSISTEMA ---------- */
+
+        .ecosystem {
+            background: #111111;
+            color: #ffffff;
+        }
+
+        .ecosystem .section-intro {
+            color: #bbbbbb;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            border: 1px solid #333333;
+            padding: 35px 25px;
+            min-height: 220px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #777777;
+        }
+
+        .card-number {
+            font-size: 0.8rem;
+            color: #888888;
+            margin-bottom: 50px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #aaaaaa;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        /* ---------- MISIÓN ---------- */
+
+        .mission {
+            text-align: center;
+        }
+
+        .mission-text {
+            max-width: 800px;
+            margin: auto;
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        /* ---------- FOOTER ---------- */
+
+        footer {
+            background: #111111;
+            color: #ffffff;
+            padding: 40px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer p {
+            color: #888888;
+            font-size: 0.85rem;
+        }
+
+        /* ---------- MÓVIL ---------- */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            .menu {
+                gap: 14px;
+            }
+
+            .menu a {
+                font-size: 0.8rem;
+            }
+
+            .cards {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            section {
+                padding: 70px 6%;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            nav {
+                height: auto;
+                padding: 20px 5%;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero {
+                min-height: calc(100vh - 100px);
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVEGACIÓN -->
+
+    <nav>
+        <div class="logo">
+            PONTE<span>TRUCHA</span>.ORG
+        </div>
+
+        <ul class="menu">
+            <li><a href="#inicio">Home</a></li>
+            <li><a href="#atenea">Atenea</a></li>
+            <li><a href="#alondra">Alondra</a></li>
+            <li><a href="#ra">RA</a></li>
+            <li><a href="#recursos">Recursos</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- INICIO -->
+
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-content">
+
+                <h1>
+                    PONTE<span>TRUCHA</span>
+                </h1>
+
+                <p>
+                    Un ecosistema de herramientas para transformar
+                    la forma de enseñar y enriquecer la manera de aprender.
+                </p>
+
+                <a href="#ecosistema" class="hero-button">
+                    Explorar el ecosistema
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ECOSISTEMA -->
+
+        <section class="ecosystem" id="ecosistema">
+
+            <h2 class="section-title">
+                El ecosistema
+            </h2>
+
+            <p class="section-intro">
+                PonteTrucha integra tecnología, inteligencia artificial,
+                realidad aumentada y recursos educativos para crear
+                mejores experiencias de aprendizaje.
+            </p>
+
+            <div class="cards">
+
+                <div class="card" id="atenea">
+                    <div class="card-number">01</div>
+
+                    <h3>Atenea</h3>
+
+                    <p>
+                        Inteligencia artificial para acompañar,
+                        explicar y potenciar el aprendizaje.
+                    </p>
+                </div>
+
+
+                <div class="card" id="alondra">
+                    <div class="card-number">02</div>
+
+                    <h3>Alondra</h3>
+
+                    <p>
+                        Un espacio de inteligencia artificial
+                        dedicado al mundo literario y creativo.
+                    </p>
+                </div>
+
+
+                <div class="card" id="ra">
+                    <div class="card-number">03</div>
+
+                    <h3>RA</h3>
+
+                    <p>
+                        Realidad aumentada para llevar
+                        los contenidos educativos al mundo real.
+                    </p>
+                </div>
+
+
+                <div class="card" id="recursos">
+                    <div class="card-number">04</div>
+
+                    <h3>Recursos</h3>
+
+                    <p>
+                        Herramientas y materiales para docentes,
+                        instructores y organizaciones.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MISIÓN -->
+
+        <section class="mission">
+
+            <p class="mission-text">
+                Transformando la forma de enseñar.
+                Inspirando la manera de aprender.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <strong>PONTE TRUCHA</strong>
+
+        <p>
+            © 2026 PonteTrucha.org
+        </p>
+
+    </footer>
+
+</body>
+</html> 
