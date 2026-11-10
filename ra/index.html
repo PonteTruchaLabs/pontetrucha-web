@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111315">
+  <meta name="description" content="Explora el camión minero Komatsu HD785-7 en 3D y realidad aumentada con PonteTrucha RA.">
+  <title>Komatsu HD785-7 | PonteTrucha RA</title>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <style>
+    :root{color-scheme:dark;--bg:#111315;--panel:#1b1f22;--line:#343a3e;--text:#f4f5f3;--muted:#aab1b4;--accent:#e3b51b}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+    header{height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,72px);border-bottom:1px solid var(--line)}
+    .brand{font-weight:800;letter-spacing:.08em;font-size:15px}.brand span{color:var(--accent)}.tag{color:var(--muted);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+    main{max-width:1240px;margin:auto;padding:clamp(24px,5vw,58px) clamp(18px,4vw,48px) 42px}
+    .eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.18em;font-size:11px;font-weight:800}
+    h1{margin:10px 0 8px;font-size:clamp(30px,5vw,54px);line-height:1.02;letter-spacing:-.04em}
+    .intro{margin:0;max-width:680px;color:var(--muted);line-height:1.6}
+    .viewer-wrap{margin-top:28px;background:linear-gradient(145deg,#252a2d,#171a1c);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+    model-viewer{width:100%;height:min(65vh,620px);min-height:340px;background:radial-gradient(ellipse at 50% 55%,#454b4e 0%,#272c2f 48%,#1a1e20 100%);--poster-color:transparent}
+    .viewer-help{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding:13px 18px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    button,.download{border:0;border-radius:999px;padding:13px 20px;font-weight:750;font-size:14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+    .primary{background:var(--accent);color:#171717}.secondary{background:#292f32;color:var(--text);border:1px solid #454d51}
+    button:focus-visible,a:focus-visible{outline:3px solid white;outline-offset:3px}
+    .details{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;margin-top:24px}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}.card h2{margin:0 0 9px;font-size:16px}.card p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
+    .credit{margin-top:22px;color:#858e92;font-size:11px;line-height:1.6}footer{border-top:1px solid var(--line);padding:20px;text-align:center;color:#778084;font-size:11px}
+    #status{color:var(--muted);font-size:12px;padding:0 18px 12px}
+    @media(max-width:700px){header{height:60px}.tag{display:none}.details{grid-template-columns:1fr}model-viewer{height:54vh;min-height:310px}.actions>*{flex:1 1 100%}}
+  </style>
+</head>
+<body>
+  <header><div class="brand">PONTE<span>TRUCHA</span> RA</div><div class="tag">Explora · Aprende · Descubre</div></header>
+  <main>
+    <div class="eyebrow">Experiencia de maquinaria en 3D</div>
+    <h1>Komatsu HD785-7</h1>
+    <p class="intro">Explora un camión minero de acarreo desde cualquier ángulo. Gira el modelo, acércate a sus detalles o llévalo a tu espacio con realidad aumentada en un dispositivo compatible.</p>
+    <section class="viewer-wrap" aria-label="Visor 3D del camión">
+      <model-viewer id="truck" src="assets/komatsu-hd785-7.glb" ios-src="assets/komatsu-hd785-7.usdz" alt="Modelo tridimensional de un camión minero Komatsu HD785-7" camera-controls touch-action="pan-y" auto-rotate rotation-per-second="18deg" shadow-intensity="1" exposure="1" environment-image="neutral" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" ar-placement="floor" camera-orbit="35deg 70deg auto" min-camera-orbit="auto 15deg auto" max-camera-orbit="auto 165deg auto" loading="eager">
+        <button slot="ar-button" class="primary" style="position:absolute;bottom:18px;left:50%;transform:translateX(-50%);white-space:nowrap">Ver en mi espacio (RA)</button>
+        <div slot="poster" style="color:white;text-align:center;padding:30px">Cargando modelo 3D…</div>
+      </model-viewer>
+      <div class="viewer-help"><span>Arrastra para girar · Pellizca o usa la rueda para acercar</span><span>Modelo 3D interactivo</span></div>
+      <div id="status" role="status" aria-live="polite">Cargando modelo…</div>
+    </section>
+    <div class="actions"><button class="primary" id="ar-launch" type="button">Ver en mi espacio (RA)</button><a class="download secondary" href="assets/komatsu-hd785-7.glb" download>Descargar modelo GLB</a></div>
+    <section class="details">
+      <article class="card"><h2>Exploración 3D</h2><p>Interactúa con el modelo para observarlo desde distintos ángulos y acercarte a sus detalles. En pantallas táctiles, utiliza uno o dos dedos.</p></article>
+      <article class="card"><h2>Realidad aumentada</h2><p>En teléfonos compatibles, utiliza el botón de RA para visualizar el camión en tu entorno. La disponibilidad depende del navegador y del dispositivo.</p></article>
+    </section>
+    <p class="credit">Modelo 3D: “Komatsu HD785-7 Dump Truck”, de Maxim Lukyanov (Mad_Huron). Licencia Creative Commons Attribution 4.0 International (CC BY 4.0). Este prototipo es una experiencia demostrativa independiente y no representa un producto oficial de Komatsu.</p>
+  </main>
+  <footer>Prototipo experimental · PonteTrucha RA</footer>
+  <script>
+    const viewer=document.querySelector('#truck'),status=document.querySelector('#status');
+    viewer.addEventListener('load',()=>{status.textContent='Modelo cargado correctamente.'});
+    viewer.addEventListener('error',()=>{status.textContent='No se pudo cargar el modelo. Verifica que los archivos estén en la carpeta assets.'});
+    document.querySelector('#ar-launch').addEventListener('click',async()=>{if(viewer.canActivateAR){try{await viewer.activateAR()}catch(e){status.textContent='No se pudo iniciar la RA. Prueba desde un teléfono compatible.'}}else{status.textContent='Este dispositivo o navegador no ofrece un modo de realidad aumentada compatible. El visor 3D sigue disponible.'}});
+  </script>
+</body>
+</html>
