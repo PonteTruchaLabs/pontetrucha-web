@@ -4,59 +4,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff">
-    <title>Pruebas | PonteTrucha</title>
+    <title>Acceso | Pruebas PonteTrucha</title>
     <style>
         * { box-sizing: border-box; }
         body {
             margin: 0;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: grid;
+            place-items: center;
             padding: 24px;
-            background: #ffffff;
-            color: #111111;
+            background: #f7f7f7;
+            color: #111;
             font-family: Arial, Helvetica, sans-serif;
         }
-        main {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 18px;
+        .panel {
+            width: min(100%, 430px);
+            padding: 38px;
+            background: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            box-shadow: 0 12px 36px rgba(0,0,0,.06);
         }
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 180px;
-            min-height: 58px;
-            padding: 16px 32px;
-            border-radius: 4px;
-            background: #111111;
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background 0.2s, transform 0.2s;
+        .brand { font-size: 1.05rem; font-weight: 800; letter-spacing: -.5px; }
+        .brand span { font-weight: 400; }
+        h1 { margin: 34px 0 8px; font-size: 2rem; letter-spacing: -1px; }
+        .intro { margin: 0 0 26px; color: #666; line-height: 1.55; }
+        label { display: block; margin: 16px 0 7px; font-size: .9rem; font-weight: 700; }
+        input {
+            width: 100%; min-height: 48px; padding: 12px 14px;
+            border: 1px solid #ccc; border-radius: 4px; font: inherit;
         }
-        .button:hover {
-            background: #333333;
-            transform: translateY(-2px);
+        input:focus { outline: 2px solid #777; outline-offset: 2px; }
+        button, .app-link {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-height: 50px; padding: 13px 20px; border: 0; border-radius: 4px;
+            background: #111; color: #fff; font: inherit; font-weight: 700;
+            text-decoration: none; cursor: pointer;
         }
-        .button:focus-visible {
-            outline: 3px solid #777777;
-            outline-offset: 4px;
+        button { width: 100%; margin-top: 22px; }
+        button:hover, .app-link:hover { background: #333; }
+        .error { min-height: 22px; margin: 12px 0 0; color: #b42318; font-size: .9rem; }
+        .hidden { display: none !important; }
+        .apps { display: grid; gap: 12px; margin-top: 25px; }
+        .logout {
+            width: auto; min-height: 40px; margin-top: 24px; padding: 9px 15px;
+            background: #eee; color: #222; font-size: .9rem;
         }
-        @media (max-width: 480px) {
-            main { width: 100%; }
-            .button { width: 100%; }
-        }
+        .logout:hover { background: #ddd; }
+        .foot { margin-top: 30px; color: #999; font-size: .78rem; line-height: 1.5; }
+        @media (max-width: 480px) { .panel { padding: 28px 22px; } }
     </style>
 </head>
 <body>
-    <main aria-label="Accesos de prueba">
-        <a class="button" href="https://centro-de-entrenamiento-832bd.web.app/" target="_blank" rel="noopener noreferrer">LMS</a>
-        <a class="button" href="https://gabotkom-2b63dutgfjmpnngtb937ti.streamlit.app/" target="_blank" rel="noopener noreferrer">BOT</a>
+    <main class="panel">
+        <div class="brand">PONTE<span>TRUCHA</span>.ORG</div>
+
+        <section id="login">
+            <h1>Área de pruebas</h1>
+            <p class="intro">Ingresa con la cuenta compartida para acceder a las aplicaciones de prueba.</p>
+            <form id="login-form">
+                <label for="username">Usuario</label>
+                <input id="username" name="username" autocomplete="username" required>
+                <label for="password">Contraseña</label>
+                <input id="password" name="password" type="password" autocomplete="current-password" required>
+                <button type="submit">Entrar</button>
+                <p id="error" class="error" role="alert" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <section id="access" class="hidden">
+            <h1>Bienvenido</h1>
+            <p class="intro">Acceso habilitado. Selecciona la aplicación que deseas abrir.</p>
+            <div class="apps">
+                <a class="app-link" href="https://gabotkom-2b63dutgfjmpnngtb937ti.streamlit.app/" target="_blank" rel="noopener noreferrer">BOT</a>
+                <a class="app-link" href="https://centro-de-entrenamiento-832bd.web.app/" target="_blank" rel="noopener noreferrer">LMS</a>
+            </div>
+            <button id="logout" class="logout" type="button">Cerrar sesión</button>
+        </section>
+
+        <p class="foot">Acceso temporal para colaboradores autorizados · PonteTrucha</p>
     </main>
+
+    <script>
+        // Acceso temporal de conveniencia. No protege las aplicaciones ni sustituye
+        // una autenticación del lado del servidor.
+        const VALID_USER = "invitado";
+        const VALID_PASSWORD = "PT-Pruebas-7Kq9!mR4";
+        const SESSION_KEY = "pontetrucha_pruebas_access";
+
+        const loginSection = document.getElementById("login");
+        const accessSection = document.getElementById("access");
+        const form = document.getElementById("login-form");
+        const error = document.getElementById("error");
+
+        function showAccess() {
+            loginSection.classList.add("hidden");
+            accessSection.classList.remove("hidden");
+        }
+
+        function showLogin() {
+            accessSection.classList.add("hidden");
+            loginSection.classList.remove("hidden");
+        }
+
+        if (sessionStorage.getItem(SESSION_KEY) === "yes") showAccess();
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value;
+
+            if (username === VALID_USER && password === VALID_PASSWORD) {
+                sessionStorage.setItem(SESSION_KEY, "yes");
+                error.textContent = "";
+                form.reset();
+                showAccess();
+            } else {
+                error.textContent = "Usuario o contraseña incorrectos.";
+            }
+        });
+
+        document.getElementById("logout").addEventListener("click", function () {
+            sessionStorage.removeItem(SESSION_KEY);
+            showLogin();
+        });
+    </script>
 </body>
 </html>
