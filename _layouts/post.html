@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<article class="wrap">
+  <div class="eyebrow">Ideas para enseñar y aprender</div>
+  <h1>{{ page.title }}</h1>
+  {% if page.description %}<p class="lead">{{ page.description }}</p>{% endif %}
+  <div class="meta">{{ page.date | date: "%d/%m/%Y" }} · PonteTrucha</div>
+  {% if page.image %}<figure><img class="cover" src="{{ page.image }}" alt="{{ page.image_alt | escape }}"><figcaption class="meta">{{ page.image_caption }}</figcaption></figure>{% endif %}
+  <div class="article-body">{{ content }}</div>
+  {% if page.references %}
+  <section class="sources">
+    <h2>Referencias para seguir explorando</h2>
+    <ol>{% for reference in page.references %}
+      <li><a href="{{ reference.url }}" target="_blank" rel="noopener noreferrer">{{ reference.title }}</a>{% if reference.note %} — {{ reference.note }}{% endif %}</li>
+    {% endfor %}</ol>
+  </section>
+  {% endif %}
+  <a class="back" href="/blog/">← Volver al blog</a>
+</article>
