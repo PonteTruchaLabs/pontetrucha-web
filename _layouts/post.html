@@ -5,7 +5,7 @@ layout: default
   <div class="eyebrow">Ideas para enseñar y aprender</div>
   <h1>{{ page.title }}</h1>
   {% if page.description %}<p class="lead">{{ page.description }}</p>{% endif %}
-  <div class="meta">{{ page.date | date: "%-d de %B de %Y" }} · PonteTrucha</div>
+  <div class="meta">{{ page.date | date: "%d/%m/%Y" }} · PonteTrucha</div>
   {% if page.image %}<figure><img class="cover" src="{{ page.image }}" alt="{{ page.image_alt | escape }}"><figcaption class="meta">{{ page.image_caption }}</figcaption></figure>{% endif %}
   <div class="article-body">{{ content }}</div>
   {% if page.references %}
