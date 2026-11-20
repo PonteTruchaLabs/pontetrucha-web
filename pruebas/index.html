@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <title>Pruebas | PonteTrucha</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: #ffffff;
+            color: #111111;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px;
+        }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 180px;
+            min-height: 58px;
+            padding: 16px 32px;
+            border-radius: 4px;
+            background: #111111;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .button:hover {
+            background: #333333;
+            transform: translateY(-2px);
+        }
+        .button:focus-visible {
+            outline: 3px solid #777777;
+            outline-offset: 4px;
+        }
+        @media (max-width: 480px) {
+            main { width: 100%; }
+            .button { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <main aria-label="Accesos de prueba">
+        <a class="button" href="https://centro-de-entrenamiento-832bd.web.app/" target="_blank" rel="noopener noreferrer">LMS</a>
+        <a class="button" href="https://gabotkom-2b63dutgfjmpnngtb937ti.streamlit.app/" target="_blank" rel="noopener noreferrer">BOT</a>
+    </main>
+</body>
+</html>
