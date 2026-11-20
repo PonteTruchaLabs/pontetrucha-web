@@ -3,7 +3,7 @@ layout: post
 title: "La capacitación a través del tiempo: ¿hemos evolucionado o solamente cambiado de herramientas?"
 date: 2026-11-20
 description: "La necesidad de aprender y transmitir conocimientos ha acompañado al ser humano desde sus orígenes. Pero ¿hemos aprendido a capacitar mejor?"
-image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Blacksmith_at_2025_Turku_medieval_market.jpg/960px-Blacksmith_at_2025_Turku_medieval_market.jpg"
+image: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Blacksmith_at_2025_Turku_medieval_market.jpg"
 image_alt: "Un herrero trabaja junto a un joven aprendiz durante una recreación de mercado medieval en Turku."
 image_caption: "Demostración de herrería y aprendizaje de oficio en el mercado medieval de Turku, 2025. Fotografía: Ypsilon from Finland, CC0, vía Wikimedia Commons."
 references:
