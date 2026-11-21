@@ -4,59 +4,86 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111315">
-  <meta name="description" content="Explora el camión minero Komatsu HD785-7 en 3D y realidad aumentada con PonteTrucha RA.">
-  <title>Komatsu HD785-7 | PonteTrucha RA</title>
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <meta name="description" content="Descubre qué es la realidad aumentada y explora experiencias 3D de PonteTrucha.">
+  <title>Realidad Aumentada | PonteTrucha</title>
   <style>
     :root{color-scheme:dark;--bg:#111315;--panel:#1b1f22;--line:#343a3e;--text:#f4f5f3;--muted:#aab1b4;--accent:#e3b51b}
-    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
     header{height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,72px);border-bottom:1px solid var(--line)}
-    .brand{font-weight:800;letter-spacing:.08em;font-size:15px}.brand span{color:var(--accent)}.tag{color:var(--muted);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
-    main{max-width:1240px;margin:auto;padding:clamp(24px,5vw,58px) clamp(18px,4vw,48px) 42px}
+    .brand{font-weight:800;letter-spacing:.08em;font-size:15px;text-decoration:none;color:var(--text)}.brand span{color:var(--accent)}.home{color:var(--muted);font-size:13px;text-decoration:none}.home:hover{color:var(--text)}
+    main{max-width:1160px;margin:auto;padding:clamp(34px,6vw,76px) clamp(18px,4vw,48px) 80px}
     .eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.18em;font-size:11px;font-weight:800}
-    h1{margin:10px 0 8px;font-size:clamp(30px,5vw,54px);line-height:1.02;letter-spacing:-.04em}
-    .intro{margin:0;max-width:680px;color:var(--muted);line-height:1.6}
-    .viewer-wrap{margin-top:28px;background:linear-gradient(145deg,#252a2d,#171a1c);border:1px solid var(--line);border-radius:18px;overflow:hidden}
-    model-viewer{width:100%;height:min(65vh,620px);min-height:340px;background:radial-gradient(ellipse at 50% 55%,#454b4e 0%,#272c2f 48%,#1a1e20 100%);--poster-color:transparent}
-    .viewer-help{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding:13px 18px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
-    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-    button,.download{border:0;border-radius:999px;padding:13px 20px;font-weight:750;font-size:14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
-    .primary{background:var(--accent);color:#171717}.secondary{background:#292f32;color:var(--text);border:1px solid #454d51}
-    button:focus-visible,a:focus-visible{outline:3px solid white;outline-offset:3px}
-    .details{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;margin-top:24px}
-    .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}.card h2{margin:0 0 9px;font-size:16px}.card p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
-    .credit{margin-top:22px;color:#858e92;font-size:11px;line-height:1.6}footer{border-top:1px solid var(--line);padding:20px;text-align:center;color:#778084;font-size:11px}
-    #status{color:var(--muted);font-size:12px;padding:0 18px 12px}
-    @media(max-width:700px){header{height:60px}.tag{display:none}.details{grid-template-columns:1fr}model-viewer{height:54vh;min-height:310px}.actions>*{flex:1 1 100%}}
+    h1{margin:12px 0 18px;font-size:clamp(36px,6vw,64px);line-height:1.02;letter-spacing:-.05em;max-width:850px}
+    .lead{max-width:780px;margin:0;color:var(--muted);font-size:clamp(16px,2vw,19px);line-height:1.75}
+    .explain{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:38px}
+    .info{padding:26px;background:var(--panel);border:1px solid var(--line);border-radius:16px}
+    .info h2{margin:0 0 10px;font-size:19px}.info p{margin:0;color:var(--muted);font-size:14px;line-height:1.75}
+    .how{margin:14px 0 0;padding-left:19px;color:var(--muted);font-size:14px}.how li{margin:7px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:66px 0 22px}
+    .section-head h2{font-size:clamp(25px,4vw,36px);letter-spacing:-.035em;margin:5px 0 0}.section-head p{color:var(--muted);font-size:13px;margin:0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),360px));gap:20px}
+    .item{overflow:hidden;background:var(--panel);border:1px solid var(--line);border-radius:16px;transition:transform .2s,border-color .2s}
+    .item:hover{transform:translateY(-4px);border-color:#697176}
+    .thumb{height:225px;display:flex;align-items:center;justify-content:center;padding:16px;background:radial-gradient(ellipse at 50% 55%,#454b4e 0%,#272c2f 58%,#1a1e20 100%)}
+    .thumb img{width:100%;height:100%;object-fit:contain}
+    .item-body{padding:20px}.category{color:var(--accent);font-size:10px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+    .item h3{margin:7px 0;font-size:21px}.item p{margin:0 0 18px;color:var(--muted);font-size:13px;line-height:1.6}
+    .open{display:inline-flex;align-items:center;justify-content:center;padding:11px 17px;border-radius:999px;background:var(--accent);color:#171717;text-decoration:none;font-size:13px;font-weight:800}
+    .open:hover{filter:brightness(1.08)}
+    .note{margin-top:18px;color:#858e92;font-size:11px;line-height:1.6}
+    footer{border-top:1px solid var(--line);padding:20px;text-align:center;color:#778084;font-size:11px}
+    @media(max-width:700px){header{height:62px}.explain{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:8px}.grid{grid-template-columns:1fr}.thumb{height:210px}}
   </style>
 </head>
 <body>
-  <header><div class="brand">PONTE<span>TRUCHA</span> RA</div><div class="tag">Explora · Aprende · Descubre</div></header>
+  <header>
+    <a class="brand" href="/">PONTE<span>TRUCHA</span> RA</a>
+    <a class="home" href="/">← Volver a PonteTrucha</a>
+  </header>
   <main>
-    <div class="eyebrow">Experiencia de maquinaria en 3D</div>
-    <h1>Komatsu HD785-7</h1>
-    <p class="intro">Explora un camión minero de acarreo desde cualquier ángulo. Gira el modelo, acércate a sus detalles o llévalo a tu espacio con realidad aumentada en un dispositivo compatible.</p>
-    <section class="viewer-wrap" aria-label="Visor 3D del camión">
-      <model-viewer id="truck" src="assets/komatsu-hd785-7.glb" ios-src="assets/komatsu-hd785-7.usdz" alt="Modelo tridimensional de un camión minero Komatsu HD785-7" camera-controls touch-action="pan-y" auto-rotate rotation-per-second="18deg" shadow-intensity="1" exposure="1" environment-image="neutral" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" ar-placement="floor" camera-orbit="35deg 70deg auto" min-camera-orbit="auto 15deg auto" max-camera-orbit="auto 165deg auto" loading="eager">
-        <button slot="ar-button" class="primary" style="position:absolute;bottom:18px;left:50%;transform:translateX(-50%);white-space:nowrap">Ver en mi espacio (RA)</button>
-        <div slot="poster" style="color:white;text-align:center;padding:30px">Cargando modelo 3D…</div>
-      </model-viewer>
-      <div class="viewer-help"><span>Arrastra para girar · Pellizca o usa la rueda para acercar</span><span>Modelo 3D interactivo</span></div>
-      <div id="status" role="status" aria-live="polite">Cargando modelo…</div>
+    <div class="eyebrow">Explora · Aprende · Descubre</div>
+    <h1>La realidad aumentada acerca lo digital al mundo real.</h1>
+    <p class="lead">La realidad aumentada (RA) incorpora elementos digitales —como modelos 3D, imágenes o información— sobre lo que vemos en nuestro entorno a través de un teléfono o una tableta. Así podemos observar objetos desde nuevas perspectivas y aprender interactuando con ellos.</p>
+
+    <section class="explain" aria-label="Qué puedes hacer con realidad aumentada">
+      <article class="info">
+        <h2>¿Para qué sirve?</h2>
+        <p>Permite explorar objetos y conceptos de una forma visual e interactiva. En educación y capacitación puede ayudar a reconocer componentes, comprender formas y dimensiones, y acercar experiencias que de otro modo serían difíciles de observar.</p>
+      </article>
+      <article class="info">
+        <h2>¿Cómo probar una experiencia?</h2>
+        <ol class="how">
+          <li>Abre una experiencia desde un teléfono o tableta compatible.</li>
+          <li>Selecciona «Ver en mi espacio (RA)».</li>
+          <li>Permite el acceso a la cámara y sigue las indicaciones del dispositivo.</li>
+          <li>Mueve el equipo para colocar el modelo en tu entorno.</li>
+        </ol>
+      </article>
     </section>
-    <div class="actions"><button class="primary" id="ar-launch" type="button">Ver en mi espacio (RA)</button><a class="download secondary" href="assets/komatsu-hd785-7.glb" download>Descargar modelo GLB</a></div>
-    <section class="details">
-      <article class="card"><h2>Exploración 3D</h2><p>Interactúa con el modelo para observarlo desde distintos ángulos y acercarte a sus detalles. En pantallas táctiles, utiliza uno o dos dedos.</p></article>
-      <article class="card"><h2>Realidad aumentada</h2><p>En teléfonos compatibles, utiliza el botón de RA para visualizar el camión en tu entorno. La disponibilidad depende del navegador y del dispositivo.</p></article>
+
+    <section aria-labelledby="experiencias">
+      <div class="section-head">
+        <div><div class="eyebrow">Biblioteca de experiencias</div><h2 id="experiencias">Explora los modelos disponibles</h2></div>
+        <p>Actualmente: 1 experiencia</p>
+      </div>
+      <div class="grid">
+        <article class="item">
+          <a href="/ra/hd785-7/" aria-label="Abrir experiencia Komatsu HD785-7">
+            <div class="thumb">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/HD785_7_no_background.png" alt="Camión minero Komatsu HD785-7 visto de perfil" loading="lazy">
+            </div>
+          </a>
+          <div class="item-body">
+            <div class="category">Maquinaria pesada</div>
+            <h3>Camión minero HD785-7</h3>
+            <p>Explora el modelo tridimensional, obsérvalo desde distintos ángulos y llévalo a tu espacio con realidad aumentada.</p>
+            <a class="open" href="/ra/hd785-7/">Explorar experiencia →</a>
+          </div>
+        </article>
+      </div>
+      <p class="note">Miniatura: Andrew301189, Wikimedia Commons, CC0 1.0. La experiencia 3D es una demostración independiente y no representa un producto oficial de Komatsu.</p>
     </section>
-    <p class="credit">Modelo 3D: “Komatsu HD785-7 Dump Truck”, de Maxim Lukyanov (Mad_Huron). Licencia Creative Commons Attribution 4.0 International (CC BY 4.0). Este prototipo es una experiencia demostrativa independiente y no representa un producto oficial de Komatsu.</p>
   </main>
-  <footer>Prototipo experimental · PonteTrucha RA</footer>
-  <script>
-    const viewer=document.querySelector('#truck'),status=document.querySelector('#status');
-    viewer.addEventListener('load',()=>{status.textContent='Modelo cargado correctamente.'});
-    viewer.addEventListener('error',()=>{status.textContent='No se pudo cargar el modelo. Verifica que los archivos estén en la carpeta assets.'});
-    document.querySelector('#ar-launch').addEventListener('click',async()=>{if(viewer.canActivateAR){try{await viewer.activateAR()}catch(e){status.textContent='No se pudo iniciar la RA. Prueba desde un teléfono compatible.'}}else{status.textContent='Este dispositivo o navegador no ofrece un modo de realidad aumentada compatible. El visor 3D sigue disponible.'}});
-  </script>
+  <footer>Experiencias educativas · PonteTrucha RA</footer>
 </body>
 </html>
